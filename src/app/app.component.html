@@ -2,31 +2,40 @@
   <h1>LOL API PROJECT</h1>
 
   <div class="row">
-    <div class="col-sm-6" *ngFor="let juego of partidas.gameList">
+    <div class="col-12" >
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">GAME MODE {{juego.gameMode}}</h5>
+          <h5 class="card-title">GAME MODE {{partida.gameMode}}</h5>
           <hr>
           <div class="container">
             <div class="row">
               <div class="col">
                 <h1>Team 1</h1>
-                <ul class="list-group" *ngFor="let jugadores of juego.participants">
+
+                
+                <ul class="list-group" *ngFor="let jugadores of partida.participants" >
                   <li class="list-group-item list-group-item-action list-group-item-primary"
-                    *ngIf="jugadores.teamId == 100">{{jugadores.summonerName}}
-                    <ul *ngFor="let postre of Postres">
-                      <img *ngIf="jugadores.championId == postre.key" src="{{postre.icon}}">
+                    *ngIf="jugadores.teamId == 100">
+                    
+                    {{jugadores.summonerName}}
+                    {{contador()}}
+                  </li>
+                    
+                   <!--{{recuperarMaestria(jugadores.summonerName,jugadores.championId)}}-->
+                   
+                    <ul *ngFor="let personaje of personajes">
+                      <img *ngIf="jugadores.championId == personaje.key" src="{{personaje.icon}}">
                     </ul>
 
                 </ul>
               </div>
               <div class="col">
                 <h1>Team 2</h1>
-                <ul class="list-group" *ngFor="let jugadores of juego.participants">
+                <ul class="list-group" *ngFor="let jugadores of partida.participants">
                   <li class="list-group-item list-group-item-action list-group-item-danger"
                     *ngIf="jugadores.teamId == 200">{{jugadores.summonerName}}
-                    <ul *ngFor="let postre of Postres">
-                      <img *ngIf="jugadores.championId == postre.key" src="{{postre.icon}}">
+                    <ul *ngFor="let personaje of personajes">
+                      <img *ngIf="jugadores.championId == personaje.key" src="{{personaje.icon}}">
                     </ul>
                   </li>
 
